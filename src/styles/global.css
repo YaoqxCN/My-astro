@@ -1,0 +1,181 @@
+:root {
+    --theme-color: rgba(74, 144, 226, 0.5);
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, white, rgb(173, 197, 230));
+    height: 100vh;
+}
+
+h1, h2, h3, h4, h5 {
+    margin: 20px 0;
+    position: relative;
+    font-weight: bold;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    color: rgb(57, 78, 106);
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2.5rem; /* Change size as needed */
+}
+
+h3 {
+    font-size: 2rem; /* Change size as needed */
+}
+
+h4 {
+    font-size: 1.75rem; /* Change size as needed */
+}
+
+h5 {
+    font-size: 1.5rem; /* Change size as needed */
+}
+
+h1::after, h2::after, h3::after, h4::after, h5::after {
+    content: ''; 
+    display: block;
+    height: 5px; 
+    /*渐变*/
+    background: linear-gradient(to right, var(--theme-color), transparent); 
+    background-color: rgba(74, 144, 226, 0.5); 
+    margin: 5px 0 0; 
+    border-radius: 5px; 
+    position: relative; 
+    left: 0; 
+}
+
+h1::after {
+    width: 50px; 
+}
+
+h2::after {
+    width: 30px; /* Smaller width than h1 */
+}
+
+/* Existing styles... */
+
+h3::after {
+    width: 25px; /* Smaller width than h2 */
+}
+
+h4::after {
+    width: 20px; /* Smaller width than h3 */
+}
+
+h5::after {
+    width: 10px; /* Smaller width than h4 */
+}
+
+/* Markdown styles */
+
+p {
+    font-size: 18px; 
+    font-weight: 500; 
+    line-height: 1.5; 
+    margin: 10px 0; 
+    color: rgb(69, 88, 115); 
+}
+
+ul, ol {
+    margin: 10px 0;
+    padding-left: 20px; /* Indentation for lists */
+    
+}
+
+li {
+    font-size: 18px; 
+    line-height: 1.5; 
+    color: rgb(69, 88, 115); 
+}
+
+a {
+    display: inline-block; /* Make it an inline block for padding and background */
+    color: rgba(7, 111, 228, 0.8);
+    text-decoration: none; /* Remove default underline */
+    margin-left: 10px; /* Add padding for a button-like effect */
+    margin-right: 10px; /* Add padding for a button-like effect */
+    border-bottom: 2px solid transparent; /* Create a space for the underline */
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border-color 0.3s ease-in-out; /* Smooth transition */
+}
+
+a:hover {
+    color: rgba(7, 111, 228, 1); /* Change text color on hover */
+    border-bottom: 2px solid rgba(7, 111, 228, 0.8); /* Underline color on hover */
+    background-color: transparent; /* Optionally keep background transparent */
+}
+
+blockquote {
+    border-left: 5px solid rgba(74, 144, 226, 0.5); 
+    margin: 20px 0; 
+    padding: 10px 20px; 
+    font-weight: 450;
+    color: rgb(69, 88, 115); 
+    background-color: rgba(173, 197, 230, 0.1);
+}
+
+code {
+    background-color: rgba(0, 0, 0, 0.05); 
+    padding: 2px 4px; 
+    border-radius: 4px; 
+}
+
+pre {
+    background-color: rgba(0, 0, 0, 0.05); 
+    padding: 10px; 
+    border-radius: 4px; 
+    overflow-x: auto; 
+}
+
+hr {
+    border: none; /* Remove default border */
+    height: 3px; /* Thickness of the line */
+    border-radius: 5px; /* Rounded corners */
+    background-color: rgba(74, 144, 226, 0.5); /* Color of the line */
+    margin: 30px 0; /* Space above and below the line */
+}
+
+
+/* Layout styles */
+.layout {
+    display: flex;
+    justify-content: center; 
+    width: 100%;
+}
+
+
+.left-column {
+    width: 20%;
+    padding: 1rem;
+    position: sticky; /* Change to sticky */
+    height: 100%;
+    top: 0; /* Align with the top */
+}
+
+/* Remove margin adjustments from center-column */
+.center-column {
+    width: 55%;
+    padding: 1rem;
+}
+
+.right-column {
+    width: 20%;
+    padding: 1rem;
+    position: sticky; /* Change to sticky */
+    height: 100%;
+    top: 0; /* Align with the top */
+}
+
+.left-column,
+.center-column,
+.right-column {
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+

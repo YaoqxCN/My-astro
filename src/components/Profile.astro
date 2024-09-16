@@ -1,0 +1,32 @@
+---
+import { avatarUrl, name } from '../const'; // Adjust the import path as necessary
+---
+
+<card>
+  <img src={ avatarUrl } alt="Avatar" />
+  <h1>{ name}</h1>
+</card>
+
+<style>
+card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    padding-left: 60px;
+    padding-right: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+card img {
+    border-radius: 50%;
+    width: 160px;  
+    height: 160px; 
+    margin-bottom: 12px;
+}
+</style>
