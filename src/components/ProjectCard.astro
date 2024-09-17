@@ -46,6 +46,7 @@ const { title, image, desc, url, badge, target = "_blank" } = Astro.props;
     align-items: center;
     margin-bottom: 10px; /* Space between title and description */
   }
+
   .project-details {
     margin: 10px;
     flex: 1;
@@ -54,8 +55,7 @@ const { title, image, desc, url, badge, target = "_blank" } = Astro.props;
   }
 
   .project-image {
-    height: auto; /* 设置为100%的高度 */
-    max-width: 40%;
+    max-width: 50%;
     border-radius: 8px 8px 0 0;
     object-fit: cover; /* 保持图片比例 */
     opacity: 1;
@@ -65,6 +65,7 @@ const { title, image, desc, url, badge, target = "_blank" } = Astro.props;
       rgba(0, 0, 0, 0) 100%
     );
   }
+
   .badge {
     background: linear-gradient(to right, rgb(64, 142, 231, 0.8), transparent);
     background-color: rgba(74, 144, 226, 0.8);
@@ -72,7 +73,7 @@ const { title, image, desc, url, badge, target = "_blank" } = Astro.props;
     padding: 5px 10px;
     border-radius: 5px;
     font-size: 12px;
-    margin-left: 10px; /* Space between title and badge */
+    margin-left: 20px; /* Space between title and badge */
     transition: all 0.2s ease-in-out;
   }
 

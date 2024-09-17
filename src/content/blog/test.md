@@ -3,6 +3,7 @@ title: Test
 desc: This is a test post.
 date: 2024 9 17
 image: https://img0.baidu.com/it/u=452827070,516205923&fm=253&fmt=auto?w=1422&h=800
+badge: Test
 ---
 
 # 一级标题

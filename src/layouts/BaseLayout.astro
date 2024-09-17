@@ -1,16 +1,17 @@
 ---
-import News from '../components/News.astro';
-import Profile from '../components/Profile.astro';
-import Menu from '../components/Menu.astro';
-import Footer from '../components/Footer.astro';
+import News from "../components/News.astro";
+import Profile from "../components/Profile.astro";
+import Menu from "../components/Menu.astro";
+import Footer from "../components/Footer.astro";
 import "../styles/global.css";
-import { siteName } from '../const';
+import { siteName } from "../const";
 const { title } = Astro.props;
 ---
+
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{siteName} - {title}</title>
   </head>
   <body>
@@ -24,7 +25,7 @@ const { title } = Astro.props;
         <Footer />
       </div>
       <div class="right-column">
-        <News/>
+        <News />
       </div>
     </div>
   </body>

@@ -201,12 +201,11 @@ img {
     /* Change to sticky */
     height: 100%;
     top: 0;
-    /* Align with the top */
 }
 
 /* Remove margin adjustments from center-column */
 .center-column {
-    width: 55%;
+    width: 900px;
     padding: 1rem;
 }
 
@@ -216,7 +215,6 @@ img {
     /* Change to sticky */
     height: 100%;
     top: 0;
-    /* Align with the top */
 }
 
 .left-column,
