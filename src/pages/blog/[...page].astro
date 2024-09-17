@@ -1,0 +1,67 @@
+---
+import type { Post, Page } from "../../types";
+import EnvelopeCard from "../../components/EnvelopeCard.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BaseCard from "../../components/BaseCard.astro";
+import { getCollection } from "astro:content";
+import { infoTest } from "../../const";
+
+export async function getStaticPaths({ paginate }: { paginate: any }) {
+  const posts = await getCollection("blog");
+  const topPosts = posts.filter((post) => post.data.badge === "置顶");
+  const otherPosts = posts.filter((post) => post.data.badge !== "置顶");
+  topPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  otherPosts.sort(
+    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+  );
+  const sortedPosts = [...topPosts, ...otherPosts];
+  return paginate(sortedPosts, { pageSize: 8 });
+}
+
+const { page }: { page: Page } = Astro.props;
+
+function generatePageLinks(totalPages: number): {
+  active: string[];
+  hidden: string[];
+} {
+  const pages = {
+    active: [] as string[],
+    hidden: [] as string[],
+  };
+  if (totalPages > 3) {
+    pages.active.push("1");
+    pages.active.push("...");
+    pages.active.push(totalPages.toString());
+    for (let i = 2; i <= totalPages - 1; i++) {
+      pages.hidden.push(i.toString());
+    }
+  } else {
+    for (let i = 1; i <= totalPages; i++) {
+      pages.active.push(i.toString());
+    }
+  }
+  return pages;
+}
+const totalPages = Math.ceil(page.total / page.size);
+const pageLinks = generatePageLinks(totalPages);
+---
+
+<BaseLayout title="博客">
+  <div class="mt-8 mb-8">
+    {
+      page.data.map((post: Post) => (
+        <EnvelopeCard
+          title={post.data.title}
+          image={post.data.image}
+          desc={post.data.description}
+          url={"/blog/" + post.slug}
+          pubDate={post.data.pubDate}
+          badge={post.data.badge}
+          categories={post.data.categories}
+          tags={post.data.tags}
+          target="_self"
+        />
+      ))
+    }
+  </div>
+</BaseLayout>

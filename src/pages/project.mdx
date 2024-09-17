@@ -1,5 +1,12 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
 
 <BaseLayout title="项目">
-  <p>这些是我的项目</p>
+  <ProjectCard
+    title="My-astro"
+    desc="这是一段测试文本，用来测试项目卡片组件的显示效果。"
+    badge="TEST"
+    image="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fc-ssl.duitang.com%2Fuploads%2Fitem%2F201707%2F17%2F20170717211714_BCahZ.thumb.400_0.png&refer=http%3A%2F%2Fc-ssl.duitang.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1729142021&t=44651aa5910b3998d33ce68c7d900277"
+    url="https://github.com"
+  />
 </BaseLayout>

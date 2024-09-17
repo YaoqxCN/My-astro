@@ -1,0 +1,80 @@
+---
+const { title, image, desc, url, badge, target = "_blank" } = Astro.props;
+---
+
+<card>
+    <div class="project-details">
+        <div class="title-badge">
+            <h1 class="project-title"><a href={url} target={target}>{title}</a></h1>
+            {badge && <span class="badge">{badge}</span>}
+        </div>
+        <p class="project-description">{desc}</p>
+        <a href={url} target={target} class="project-link"> {url} </a>
+    </div>
+    {image && <img src={image} alt={title} class="project-image" />}
+</card>
+
+<style>
+card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding-left: 20px;
+      display: flex;
+      align-items: flex-start; /* Align items to the top */
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+      position: relative;
+      overflow: hidden; /* Ensures gradient is contained */
+      transition: all 0.2s ease-in-out;
+  }
+
+card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+card h1 {
+    cursor: pointer;
+}
+
+.title-badge a {
+    color: rgb(57, 78, 106);
+    border-bottom: none;
+}
+
+.title-badge {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px; /* Space between title and description */
+  }
+.project-details {
+    margin: 10px;
+    flex: 1;
+    position: relative; /* For positioning within the card */
+    height: auto;
+  }
+.project-image {
+    width: 30%;
+    border-radius: 8px 8px 0 0;
+    object-fit: cover;
+    opacity: 1;
+    mask-image: linear-gradient(to left, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+  }
+.badge {
+      background: linear-gradient(to right, rgba(74, 144, 226), transparent);
+      background-color: rgba(74, 144, 226, 0.8);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 12px;
+      margin-left: 10px; /* Space between title and badge */
+  }
+.project-link {
+      text-decoration: none;
+      color: #007bff;
+      font-weight: bold;
+      margin-top: 10px;
+  }
+</style>

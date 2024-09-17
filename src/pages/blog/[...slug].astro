@@ -1,0 +1,47 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BaseCard from "../../components/BaseCard.astro";
+import { type CollectionEntry, getCollection } from "astro:content";
+import { infoTest } from "../../const";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+  return posts.map((post: { slug: any }) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+interface Props {
+  post: CollectionEntry<"blog">;
+}
+
+const { post } = Astro.props;
+const hasTags = post.data.tags && post.data.tags.length > 0;
+const { Content, remarkPluginFrontmatter } = await post.render();
+---
+
+<link rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/4.7.0/css/font-awesome.min.css">
+<BaseLayout title={post.data.title}>
+<BaseCard image={post.data.image}>
+    <h1>{post.data.title}</h1>
+    <p><i class="fa fa-calendar"></i>&nbsp;&nbsp;{post.data.date}</p>
+    <!-- {hasTags ? (
+        post.data.tags.map((tag) => (
+          <>
+            <a
+              href={`/blog/tag/${tag}`}
+              class="btn btn-xs btn-secondary"
+            >
+              {tag}
+            </a>
+          </>
+        ))
+      ) : (
+        <div class="btn btn-xs btn-secondary btn-disabled">
+          {infoTest.noTag}
+        </div>
+      )} -->
+    <hr />
+    <Content />
+</BaseCard>
+</BaseLayout>

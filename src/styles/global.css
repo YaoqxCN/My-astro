@@ -1,5 +1,6 @@
 :root {
-    --theme-color: rgba(74, 144, 226, 0.5);
+    --theme-color: rgba(74, 144, 226, 0.7);
+    --font-color: rgb(69, 88, 115)
 }
 
 body {
@@ -96,22 +97,34 @@ li {
 
 a {
     display: inline-block; /* Make it an inline block for padding and background */
+    position: relative;
     color: rgba(7, 111, 228, 0.8);
     text-decoration: none; /* Remove default underline */
-    margin-left: 10px; /* Add padding for a button-like effect */
-    margin-right: 10px; /* Add padding for a button-like effect */
     border-bottom: 2px solid transparent; /* Create a space for the underline */
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border-color 0.3s ease-in-out; /* Smooth transition */
 }
 
-a:hover {
-    color: rgba(7, 111, 228, 1); /* Change text color on hover */
-    border-bottom: 2px solid rgba(7, 111, 228, 0.8); /* Underline color on hover */
-    background-color: transparent; /* Optionally keep background transparent */
-}
+a::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #000;
+    transform-origin: bottom right;
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+   
+  a:hover::before {
+    transform-origin: bottom left;
+    transform: scaleX(1);
+  }
 
 blockquote {
-    border-left: 5px solid rgba(74, 144, 226, 0.5); 
+    border-radius: 10px;
+    border-left: 5px solid rgba(74, 144, 226, 0.5);
     margin: 20px 0; 
     padding: 10px 20px; 
     font-weight: 450;
@@ -138,6 +151,11 @@ hr {
     border-radius: 5px; /* Rounded corners */
     background-color: rgba(74, 144, 226, 0.5); /* Color of the line */
     margin: 30px 0; /* Space above and below the line */
+}
+
+img {
+    max-width: 100%; /* Full width */
+    border-radius: 10px;
 }
 
 
@@ -177,5 +195,3 @@ hr {
     box-sizing: border-box;
     max-width: 100%;
 }
-
-
