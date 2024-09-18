@@ -22,8 +22,7 @@ const { Content, remarkPluginFrontmatter } = await post.render();
 
 <link rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/4.7.0/css/font-awesome.min.css">
 <BaseLayout title={post.data.title}>
-<BaseCard image={post.data.image}>
-    <h1>{post.data.title}</h1>
+<BaseCard image={post.data.image} title={post.data.title}>
     <p><i class="fa fa-calendar"></i>&nbsp;&nbsp;{post.data.date}</p>
     <!-- {hasTags ? (
         post.data.tags.map((tag) => (

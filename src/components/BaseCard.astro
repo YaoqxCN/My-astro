@@ -1,15 +1,15 @@
 ---
-import "../styles/global.css"
+import "../styles/global.css";
 const { image } = Astro.props;
 ---
 
 <card>
   {image && <img src={image} alt="Card Image" class="card-image" />}
-  <span><slot /></span>
+  <span><h1>{Astro.props.title}</h1><slot /></span>
 </card>
 
 <style>
-card {
+  card {
     border: 1px solid #ddd;
     border-radius: 8px;
     display: flex;
@@ -18,20 +18,24 @@ card {
     background: rgba(255, 255, 255, 0.7);
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-}
+  }
 
-card span {
+  card span {
     margin: 40px;
     margin-top: 20px;
-}
+  }
 
-.card-image {
+  .card-image {
     width: 100%;
     border-radius: 8px 8px 0 0;
     object-fit: cover;
     height: 200px;
     opacity: 1;
     transition: opacity 0.5s ease-in-out;
-    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
-}
+    mask-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(0, 0, 0, 0) 100%
+    );
+  }
 </style>

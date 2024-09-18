@@ -1,0 +1,79 @@
+---
+const { name, desc, url, image } = Astro.props;
+---
+
+<card>
+    <div class="project-details">
+        <div class="title-badge">
+            <h2><a href={url} target="_blank" class="project-title">{name}</a></h2>
+        </div>
+        <p class="project-description">{desc}</p>
+    </div>
+    <img src={image} alt={name} class="project-image" />
+</card>
+
+<style>
+    card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding-left: 20px;
+        display: flex;
+        background: transparent;
+        margin-bottom: 20px;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.2s ease-in-out;
+        min-height: 200px;
+    }
+
+    card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    .title-badge a {
+        color: rgb(57, 78, 106);
+        border-bottom: none;
+    }
+
+    .title-badge {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px; /* Space between title and description */
+    }
+
+    .project-details {
+        margin: 10px;
+        flex: 1;
+        position: relative;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start; /* 确保左侧内容靠上对齐 */
+    }
+
+    .project-description {
+        margin-top: 0;
+    }
+
+    .project-image {
+        width: 100px; /* 设置为正方形的宽度 */
+        height: 100px; /* 设置为正方形的高度 */
+        border-radius: 10px; /* 圆角头像 */
+        object-fit: cover; /* 保持图片比例 */
+        margin-left: auto; /* 将图片推到右侧 */
+        margin-right: 40px; /* 为图片添加右边距 */
+        align-self: center; /* 在垂直方向上居中图片 */
+    }
+
+    .project-title::before {
+    background-color: transparent;
+    background: transparent;
+  }
+
+  .project-title:hover::before {
+    background-color: transparent;
+    background: transparent;
+  }
+</style>
+

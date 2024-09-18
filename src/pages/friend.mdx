@@ -1,5 +1,29 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
+import BaseCard from '../components/BaseCard.astro';
+import FriendCard from '../components/FriendCard.astro';
 
 <BaseLayout title="友链">
-  <p>这是友链</p>
+<BaseCard title="友链">
+  <br/>
+  <table style="width: 100%; border-collapse: collapse; ">
+    <tr>
+      <td style="vertical-align: top; padding-right: 10px;">
+        <FriendCard
+          name="Maozy"
+          desc="Maozy的个人博客"
+          url="https://github.com"
+          image="http://112.124.33.59/upload/user-avatar/b7/a7/6258e85a8a09353443a27df3ca11880e_large.jpg"
+        />
+      </td>
+      <td style="vertical-align: top; padding-left: 10px;">
+        <FriendCard
+          name="SunMaple"
+          desc="一位普通的高中学生"
+          url="https://www.saroprock.com"
+          image="https://www.saroprock.com/profile.webp"
+        />
+      </td>
+    </tr>
+  </table>
+</BaseCard>
 </BaseLayout>

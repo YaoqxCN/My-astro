@@ -15,7 +15,7 @@ const target = "_self";
 <card>
     <div class="project-details">
       <div class="title-badge">
-        <h1 class="project-title">{title}</h1>
+        <h1><a href={url} target={target} class="project-title">{title}</a></h1>
         {badge && <span class="badge">{badge}</span>}
       </div>
       <p>{desc}</p>
@@ -96,5 +96,19 @@ const target = "_self";
     color: #007bff;
     font-weight: bold;
     margin-top: 10px;
+  }
+
+  .project-title:hover {
+    color: #007bff;
+  }
+
+  .project-title::before {
+    background-color: transparent;
+    background: transparent;
+  }
+
+  .project-title:hover::before {
+    background-color: transparent;
+    background: transparent;
   }
 </style>

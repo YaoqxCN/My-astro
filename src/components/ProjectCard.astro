@@ -5,11 +5,10 @@ const { title, image, desc, url, badge, target = "_blank" } = Astro.props;
 <card>
   <div class="project-details">
     <div class="title-badge">
-      <h1 class="project-title">{title}</h1>
+      <h1><a href={url} target={target} class="project-title">{title}</a></h1>
       {badge && <span class="badge">{badge}</span>}
     </div>
     <p class="project-description">{desc}</p>
-    <a href={url} target={target} class="project-link"> {url} </a>
   </div>
   {image && <img src={image} alt={title} class="project-image" />}
 </card>
@@ -87,5 +86,15 @@ const { title, image, desc, url, badge, target = "_blank" } = Astro.props;
     color: #007bff;
     font-weight: bold;
     margin-top: 10px;
+  }
+
+  .project-title::before {
+    background-color: transparent;
+    background: transparent;
+  }
+
+  .project-title:hover::before {
+    background-color: transparent;
+    background: transparent;
   }
 </style>
