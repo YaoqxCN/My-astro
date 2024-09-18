@@ -85,7 +85,7 @@ h4::after {
 }
 
 h5::after {
-    width: 10px;
+    width: 15px;
     /* Smaller width than h4 */
 }
 
@@ -185,6 +185,33 @@ img {
     /* Full width */
     border-radius: 10px;
 }
+
+/* 表格样式 */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.5;
+    margin: 10px 0;
+    color: rgb(69, 88, 115);
+}
+
+th, td {
+    padding: 12px;
+}
+
+th {
+    background-color: rgba(173, 197, 230, 0.3);
+    color: rgb(57, 78, 106);
+    font-weight: bold;
+}
+
+
+
 
 
 /* Layout styles */
