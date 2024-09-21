@@ -285,7 +285,7 @@ th {
 }
 
 .right-column {
-    width: 15%;
+    width: 300px;
     padding: 1rem;
     position: sticky;
     /* Change to sticky */

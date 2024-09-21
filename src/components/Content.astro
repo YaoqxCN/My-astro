@@ -15,6 +15,7 @@ import BaseCard from "./BaseCard.astro"
 <script>
   function addContent() {
     const headings = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+    const isBlogPage = document.body.classList.contains('blog-page');
 
     const generateTocContent = () => {
   let tocContent = "";
