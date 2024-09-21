@@ -1,0 +1,59 @@
+---
+import BaseCard from "./BaseCard.astro"
+---
+
+<card>
+  <div
+    id="button-box"
+  >
+  </div>
+  <div
+    id="content-box"
+  >
+  </div>
+</card>
+<script>
+  function addContent() {
+    const headings = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+
+    const generateTocContent = () => {
+  let tocContent = "";
+  let levelCounters = [0, 0, 0, 0, 0, 0];
+  headings.forEach((heading) => {
+    const headingId = heading.id;
+    const headingText = heading.textContent;
+    const headingLevel = parseInt(heading.tagName.charAt(1), 10);
+
+    if (headingId && headingText && headingLevel) {
+      const level = headingLevel - 1;
+      levelCounters[level]++;
+      levelCounters.fill(0, level + 1);
+      var numbering = levelCounters.slice(1, level + 1).join(".");
+      tocContent += `<a class="toc-link" href="#${headingId}"><span class="toc-number">${numbering}</span>  ${headingText}</a><br/>`;
+    }
+  });
+  return tocContent;
+};
+    const tocBox = document.getElementById("content-box");
+
+    if (tocBox) {
+      tocBox.innerHTML = generateTocContent();
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", addContent);
+</script>
+
+<style>
+    card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin-bottom: 20px;
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+  }
+</style>

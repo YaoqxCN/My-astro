@@ -1,11 +1,11 @@
 ---
 import "../styles/global.css";
-const { image } = Astro.props;
+const { image, title } = Astro.props;
 ---
 
 <card>
   {image && <img src={image} alt="Card Image" class="card-image" />}
-  <span><h1>{Astro.props.title}</h1><slot /></span>
+  <span>{title && <h1>{title}</h1>}<slot /></span>
 </card>
 
 <style>
