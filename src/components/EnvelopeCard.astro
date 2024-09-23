@@ -1,11 +1,11 @@
 ---
-import { Image } from "astro:assets";
+import dayjs from "dayjs";
 import { infoTest } from "../const";
 import type { EnvelopeInfo } from "../types";
 const { title, desc, image, date, badge, categories, tags, url } =
   Astro.props as EnvelopeInfo;
 const tag_url = url.split("/").slice(0, -1).join("/") + "/tag";
-const displayDate = date;
+const displayDate = dayjs(date).format("YYYY MM DD");
 const hasTategories = categories && categories.length > 0;
 const hasTags = tags && tags.length > 0;
 const target = "_self";
@@ -19,9 +19,46 @@ const target = "_self";
         {badge && <span class="badge">{badge}</span>}
       </div>
       <p>{desc}</p>
-      <p><i class="fa fa-calendar"></i>&nbsp;&nbsp;{displayDate}</p>
+      <p style="margin-top: 10px;"><i class="fa fa-calendar"></i>&nbsp;&nbsp;{displayDate}</p>
+      <div class="tags mt-2">
+        {
+          hasTategories ? (
+            categories.map((categoroy) => (
+              <>
+                <a
+                  href={`/blog/categories/${categoroy}`}
+                  class="btn"
+                >
+                  {categoroy}
+                </a>
+                <span>&thinsp;</span>
+              </>
+            ))
+          ) : (
+            <div class="btn btn-xs btn-secondary btn-disabled rounded-full">
+              {infoTest.noCategory}
+            </div>
+          )
+        }
+        {
+          hasTags ? (
+            tags.map((tag) => (
+              <>
+                <a href={`/blog/tag/${tag}`} class="btn btn-xs btn-secondary">
+                  {tag}
+                </a>
+                <span>&thinsp;</span>
+              </>
+            ))
+          ) : (
+            <div class="btn btn-xs btn-secondary btn-disabled">
+              {infoTest.noTag}
+            </div>
+          )
+        }
+      </div>
     </div>
-    {image && <img src={image} alt={title} class="project-image" />}
+    {image && <img  src={image} alt={title} class="project-image" />}
   </card>
   
   <style>
@@ -58,23 +95,28 @@ const target = "_self";
   }
   .project-details {
     margin: 10px;
+    margin-bottom: 20px;
     flex: 1;
     position: relative; /* For positioning within the card */
-    height: auto;
+    height: 100%;
   }
 
   .project-image {
-    height: auto; /* 设置为100%的高度 */
-    max-width: 50%;
+    position: relative;
+    height: auto; /* 设置为 100% 的高度 */
+    width: 100%;
+    max-width: 45%;
+    overflow: hidden;
     border-radius: 8px 8px 0 0;
-    object-fit: cover; /* 保持图片比例 */
     opacity: 1;
+    object-fit: cover;
     mask-image: linear-gradient(
       to left,
       rgba(0, 0, 0, 1) 0%,
       rgba(0, 0, 0, 0) 100%
     );
-  }
+}
+
   .badge {
     background: linear-gradient(to right, rgb(64, 142, 231, 0.8), transparent);
     background-color: rgba(74, 144, 226, 0.8);
@@ -98,10 +140,6 @@ const target = "_self";
     margin-top: 10px;
   }
 
-  .project-title:hover {
-    color: #007bff;
-  }
-
   .project-title::before {
     background-color: transparent;
     background: transparent;
@@ -110,5 +148,19 @@ const target = "_self";
   .project-title:hover::before {
     background-color: transparent;
     background: transparent;
+  }
+
+  .btn {
+    font-weight: bold;
+    font-size: 12px;
+    background-color: #3593f7;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: white;
+    margin-bottom: 10px;
+  }
+
+  .btn-secondary {
+    background-color: #7606df;
   }
 </style>

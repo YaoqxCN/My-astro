@@ -2,7 +2,6 @@
 import type { Post, Page } from "../../types";
 import EnvelopeCard from "../../components/EnvelopeCard.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import BaseCard from "../../components/BaseCard.astro";
 import { getCollection } from "astro:content";
 import { infoTest } from "../../const";
 
@@ -10,9 +9,9 @@ export async function getStaticPaths({ paginate }: { paginate: any }) {
   const posts = await getCollection("blog");
   const topPosts = posts.filter((post) => post.data.badge === "置顶");
   const otherPosts = posts.filter((post) => post.data.badge !== "置顶");
-  topPosts.sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  topPosts.sort((a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf());
   otherPosts.sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+    (a, b) => new Date(b.data.date).valueOf() - new Date(a.data.date).valueOf()
   );
   const sortedPosts = [...topPosts, ...otherPosts];
   return paginate(sortedPosts, { pageSize: 8 });
@@ -47,7 +46,7 @@ const pageLinks = generatePageLinks(totalPages);
 ---
 
 <BaseLayout title="博客">
-  <div class="mt-8 mb-8">
+  <div>
     {
       page.data.map((post: Post) => (
         <EnvelopeCard
