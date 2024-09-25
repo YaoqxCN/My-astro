@@ -3,6 +3,8 @@ import Profile from "../components/Profile.astro";
 import Menu from "../components/Menu.astro";
 import Footer from "../components/Footer.astro";
 import Content from "../components/Content.astro";
+import Tags from "../components/Tags.astro";
+import Categories from "../components/Categories.astro";
 import "../styles/global.css";
 import { siteName } from "../const";
 const { title, isBlog } = Astro.props;
@@ -26,6 +28,8 @@ const { title, isBlog } = Astro.props;
       </div>
       <div class="right-column">
         {isBlog && <Content />}
+        <Categories />
+        <Tags />
       </div>
     </div>
   </body>

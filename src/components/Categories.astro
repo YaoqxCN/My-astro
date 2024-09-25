@@ -1,0 +1,115 @@
+---
+import { getCollection } from "astro:content";
+import { infoTest } from "../const";
+
+interface TagCount {
+  category: string;
+  count: number;
+}
+
+export async function getTagsWithCounts(): Promise<TagCount[]> {
+  const posts = await getCollection("blog");
+
+  const tagMap = new Map<string, number>();
+
+  posts.forEach((post) => {
+    const tags = post.data.categories || [];
+    tags.forEach((category) => {
+      tagMap.set(category, (tagMap.get(category) || 0) + 1);
+    });
+  });
+
+  return Array.from(tagMap, ([category, count]) => ({ category, count }));
+}
+const tagsWithCounts = await getTagsWithCounts();
+---
+
+<div class="tag-container">
+  <div class="tag-header">
+    <div class="tag-title">
+      {infoTest.categoryCard}
+    </div>
+  </div>
+  <div class="tag-list">
+    {
+      tagsWithCounts.map(({ category, count }) => (
+        <span class="tag-item">
+          <a href={`/blog/categories/${category}`} class="tag-link">
+            {category}
+            <div class="tag-count">{count}</div>
+          </a>
+        </span>
+      ))
+    }
+  </div>
+</div>
+
+<style>
+    .tag-container {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 10px;
+      padding-left: 30px;
+      padding-right: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 20px;
+      background: rgba(255, 255, 255);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+  
+    .tag-title {
+      font-weight: bold;
+      font-size: 15px;
+      padding: 10px;
+      color: var(--font-color);
+    }
+  
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    .tag-list::-webkit-scrollbar {
+      width: 0;
+    }
+  
+    .tag-item {
+      display: inline;
+    }
+  
+    .tag-link {
+      display: inline-block;
+      padding: 0.25rem 0.5rem;
+      border-radius: 5px;
+      background-color: rgba(173, 197, 230, 0.1);;
+      text-decoration: none;
+      color: var(--font-color);
+      font-weight: bold;
+      transition: all 0.2s ease-in-out;
+    }
+  
+    .tag-link:hover {
+      
+      background-color: rgba(235,237,244);
+      transform: translateY(-5px);
+    }
+  
+    .tag-link::before {
+      background-color: none;
+      background: none;
+    }
+  
+    .tag-count {
+      display: inline-block;
+      background-color: #d8e3f2;
+      border-radius: 12px;
+      padding: 0.1rem 0.4rem;
+      margin-left: 0.5rem;
+      font-size: 0.8rem;
+    }
+  </style>

@@ -9,6 +9,7 @@ import BaseCard from "./BaseCard.astro"
   </div>
   <div
     id="content-box"
+    class="content-box"
   >
   </div>
 </card>
@@ -53,8 +54,19 @@ import BaseCard from "./BaseCard.astro"
     flex-direction: column;
     align-items: left;
     margin-bottom: 20px;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    padding: 20px;
+    padding: 20px 20px;
+  }
+
+  .content-box {
+    
+    max-height: 400px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  .content-box::-webkit-scrollbar {
+    width: 0;
   }
 </style>
