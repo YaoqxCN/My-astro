@@ -55,10 +55,9 @@ const pageLinks = generatePageLinks(totalPages);
 ---
 
 <BaseLayout title={params.tag}>
-  <BaseCard title="Tag">
-    <h1 id="h1">{infoTest.tagPage + params.tag}</h1>
+  <BaseCard title={infoTest.tagPage + params.tag}>
   </BaseCard>
-  <div class="mt-8 mb-8">
+  <div>
     {
       page.data.map((post: Post) => (
         <EnvelopeCard

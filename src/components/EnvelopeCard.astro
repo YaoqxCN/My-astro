@@ -13,7 +13,7 @@ const target = "_self";
 
 <link rel="stylesheet" href="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/4.7.0/css/font-awesome.min.css">
 <card>
-    <div class="project-details">
+    <div class="project-details" style={image ? 'max-width: 55%;' : 'max-width: 100%;'}>
       <div class="title-badge">
         <h1><a href={url} target={target} class="project-title">{title}</a></h1>
         {badge && <span class="badge">{badge}</span>}
@@ -58,7 +58,7 @@ const target = "_self";
         }
       </div>
     </div>
-    {image && <img  src={image} alt={title} class="project-image" />}
+    {image && <div class="image-container"> <img src={image} alt={title} class="project-image" /> </div>}
   </card>
   
   <style>
@@ -72,10 +72,12 @@ const target = "_self";
     backdrop-filter: blur(10px);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
-    position: relative;
-    overflow: hidden; /* Ensures gradient is contained */
     transition: all 0.2s ease-in-out;
-    min-height: 200px; /* 设置最小高度 */
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    flex-direction: row;
+    height: auto;
   }
 
   card:hover {
@@ -94,22 +96,31 @@ const target = "_self";
     margin-bottom: 10px; /* Space between title and description */
   }
   .project-details {
+    text-align: left;
     margin: 10px;
     margin-bottom: 20px;
-    flex: 1;
     position: relative; /* For positioning within the card */
     height: 100%;
+    flex: 1;
+    flex-direction: column;
+    max-width: 60%;
   }
 
-  .project-image {
-    position: relative;
-    height: auto; /* 设置为 100% 的高度 */
-    width: 100%;
+  .image-container {
+    position: absolute; /* 绝对定位 */
+    top: 0; /* 顶部对齐 */
+    right: 0; /* 左侧对齐 */
+    width: auto; /* 让宽度可以根据内容自适应 */
+    height: 100%; /* 高度占满整个父元素 */
+    overflow: hidden; /* 隐藏超出部分 */
     max-width: 45%;
-    overflow: hidden;
-    border-radius: 8px 8px 0 0;
-    opacity: 1;
+}
+
+  .project-image {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
+    border-radius: 8px 8px 0 0;
     mask-image: linear-gradient(
       to left,
       rgba(0, 0, 0, 1) 0%,
@@ -138,6 +149,10 @@ const target = "_self";
     color: #007bff;
     font-weight: bold;
     margin-top: 10px;
+  }
+
+  .project-title {
+    font-size: 45px;
   }
 
   .project-title::before {
