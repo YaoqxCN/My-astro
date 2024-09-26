@@ -156,23 +156,60 @@ blockquote {
 }
 
 code {
-    background-color: rgba(0, 0, 0, 0.1);
-    padding: 4px 6px;
-    border-radius: 4px;
-    font-family: 'Courier New', Courier, monospace;
-    color: #d63384; /* 更醒目的颜色 */
+    font-family: 'Jetbrains Mono', 'Consolas', '微软雅黑';
 }
 
 pre {
-    background-color: rgba(240, 248, 255, 0.9); /* 更明亮的背景 */
-    padding: 15px;
-    border-radius: 8px;
-    overflow-x: auto;
-    font-family: 'Consolas', Consolas, Consolas;
+    background-color: rgba(173, 197, 230, 0.1);
+    padding: 10px;
     color: #333; /* 字体颜色更深 */
-    border: 1px solid rgba(74, 144, 226, 0.6); /* 添加边框 */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); 
-    max-height: 400px; /* 限制高度，保持部分内容可滚动 */
+}
+
+.frosti-code,
+.frosti-code span {
+  @apply text-sm;
+  background-color: oklch(var(--b2));
+}
+
+.highlight {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0.5rem 0;
+  background-color: #e9f5ff;
+}
+
+.highlight-tools {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: #e2eaf1;
+}
+
+.highlight-code{
+  @apply flex;
+}
+
+.highlight-code .code{
+  @apply flex-auto;
+  overflow: auto;
+  padding-right: 4em;
+}
+
+.highlight-code .gutter{
+  @apply flex-none text-right;
+  user-select: none;
+  border-right: 1px solid #888;
+  font-weight: bold;
+  line-height: 1.5;
+  font-family: 'Jetbrains Mono', 'Consolas', '微软雅黑';
+  
+}
+
+.highlight .code-lang {
+  font-family: 'Jetbrains Mono', 'Consolas', '微软雅黑';
+  user-select: none;
 }
 
 
