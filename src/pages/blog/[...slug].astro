@@ -17,6 +17,7 @@ interface Props {
 
 const { post } = Astro.props;
 const hasTags = post.data.tags && post.data.tags.length > 0;
+const hasTategories = post.data.categories && post.data.categories.length > 0;
 const { Content, remarkPluginFrontmatter } = await post.render();
 ---
 
@@ -24,23 +25,78 @@ const { Content, remarkPluginFrontmatter } = await post.render();
 <BaseLayout title={post.data.title} isBlog={true}>
 <BaseCard image={post.data.image} title={post.data.title}>
     <p><i class="fa fa-calendar"></i>&nbsp;&nbsp;{post.data.date}</p>
-    <!-- {hasTags ? (
+    {
+      hasTategories ? (
+        post.data.categories.map((categoroy) => (
+          <>
+            <a href={`/blog/categories/${categoroy}`} class="btn">
+              {categoroy}
+            </a>
+            <span>&thinsp;</span>
+          </>
+        ))
+      ) : (
+        <div class="btn">
+          {infoTest.noCategory}
+        </div>
+      )
+    }
+    {hasTags ? (
         post.data.tags.map((tag) => (
           <>
             <a
               href={`/blog/tag/${tag}`}
-              class="btn btn-xs btn-secondary"
+              class="btn btn-secondary"
             >
               {tag}
             </a>
           </>
         ))
       ) : (
-        <div class="btn btn-xs btn-secondary btn-disabled">
+        <div class="btn btn-secondary">
           {infoTest.noTag}
         </div>
-      )} -->
+      )}
     <hr />
     <Content />
 </BaseCard>
 </BaseLayout>
+
+<style>
+  .btn {
+    font-weight: bold;
+    font-size: 12px;
+    background-color: #3593f7;
+    border-radius: 5px;
+    padding: 5px 10px;
+    color: white;
+    margin-bottom: 10px;
+    transition: all 0.2s ease-in-out;
+    margin-right: 10px;
+  }
+
+  .btn:hover {
+    background-color: #007bff;
+  }
+
+  .btn:active {
+    background-color: #025ec0;
+  }
+
+  .btn::before {
+    background-color: transparent;
+    background: transparent;
+  }
+
+  .btn-secondary {
+    background-color: #7606df;
+  }
+
+  .btn-secondary:hover {
+    background-color: #5c0bad;
+  }
+
+  .btn-secondary:active {
+    background-color: #3d038a;
+  }
+</style>
