@@ -1,13 +1,29 @@
 :root {
-    --theme-color: rgba(74, 144, 226, 0.7);
-    --font-color: rgb(69, 88, 115)
+    --theme-color: #a7c4e4;
+    --theme-primary-color: rgba(74, 144, 226, 0.5);
+    --theme-bg-primary: rgba(173, 197, 230, 0.1);
+    --theme-bg: #d7e5f5;
+    --card-color: #ffffff;
+    --link-color: #286BFC;
+    --font-color: rgb(69, 88, 115);
+    --success-color: #76B52F;
+    --error-color: #FF836B;
+    --warning-color: #F4CE0C;
+    --info-color: #286BFC;
+}
+
+:root.dark {
+    --theme-bg: #13283f;
+    --card-color: #2d364b;
+    --font-color: #dfdfdf;
+    --link-color: #8eb2ff;
 }
 
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(to right, white, rgb(173, 197, 230));
-    height: 100vh;
+    background: var(--theme-bg);
+    transition: all 0.2s ease-in-out;
 }
 
 h1,
@@ -18,7 +34,7 @@ h5 {
     margin: 20px 0;
     position: relative;
     font-weight: bold;
-    color: rgb(57, 78, 106);
+    color: var(--font-color);
 }
 
 h1 {
@@ -55,7 +71,7 @@ h5::after {
     height: 5px;
     /*渐变*/
     background: linear-gradient(to right, var(--theme-color), transparent);
-    background-color: rgba(74, 144, 226, 0.5);
+    background-color: var(--theme-primary-color);
     margin: 5px 0 0;
     border-radius: 5px;
     position: relative;
@@ -70,8 +86,6 @@ h2::after {
     width: 30px;
     /* Smaller width than h1 */
 }
-
-/* Existing styles... */
 
 h3::after {
     width: 25px;
@@ -95,13 +109,15 @@ p {
     font-weight: 500;
     line-height: 1.5;
     margin: 10px 0;
-    color: rgb(69, 88, 115);
+    color: var(--font-color);
 }
 
 ul,
 ol {
     margin: 10px 0;
     padding-left: 20px;
+    color: var(--font-color);
+    list-style-type: disc;
     /* Indentation for lists */
 
 }
@@ -109,19 +125,20 @@ ol {
 li {
     font-size: 18px;
     line-height: 1.5;
-    color: rgb(69, 88, 115);
+    color: var(--font-color);
+    list-style-type: decimal;
 }
 
 a {
     display: inline-block;
     /* Make it an inline block for padding and background */
     position: relative;
-    color: rgba(7, 111, 228, 0.8);
+    color: var(--link-color);
     text-decoration: none;
     /* Remove default underline */
     border-bottom: 2px solid transparent;
     /* Create a space for the underline */
-    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+    transition: all 0.2s ease-in-out;
     /* Smooth transition */
 }
 
@@ -131,13 +148,13 @@ a::before {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 4px;
+    height: 2px;
     border-radius: 5px;
     background: linear-gradient(to right, var(--theme-color), transparent);
-    background-color: rgba(74, 144, 226, 0.5);
+    background-color: var(--theme-primary-color);
     transform-origin: bottom left;
     transform: scaleX(0);
-    transition: transform 0.3s ease;
+    transition: all 0.2s ease-in-out;
 }
 
 a:hover::before {
@@ -147,12 +164,12 @@ a:hover::before {
 
 blockquote {
     border-radius: 10px;
-    border-left: 5px solid rgba(74, 144, 226, 0.5);
+    border-left: 5px solid var(--theme-primary-color);
     margin: 20px 0;
     padding: 10px 20px;
     font-weight: 450;
     color: rgb(69, 88, 115);
-    background-color: rgba(173, 197, 230, 0.1);
+    background-color: var(--theme-bg-primary);
 }
 
 code {
@@ -252,7 +269,7 @@ th, td {
 
 th {
     background-color: rgba(173, 197, 230, 0.3);
-    color: rgb(57, 78, 106);
+    color: var(--font-color);
     font-weight: bold;
 }
 
@@ -260,7 +277,7 @@ th {
     width: 100%;
     box-sizing: border-box;
     background-color: transparent;
-    color: rgb(69, 88, 115);
+    color: var(--font-color);
     font-weight: 500;
     font-size: 1.2rem;
     border-radius: 5px;
@@ -274,7 +291,7 @@ th {
 
   .toc-link:hover {
     border-bottom: none;
-    background-color: rgb(222, 223, 228);
+    background-color: rgba(222, 223, 228, 0.2);
     transform: translateY(-5px);
   }
 
@@ -319,7 +336,7 @@ th {
 
 /* Remove margin adjustments from center-column */
 .center-column {
-    width: 1000px;
+    width: 950px;
     padding: 1rem;
 }
 
@@ -344,4 +361,12 @@ th {
 .center-column::-webkit-scrollbar,
 .right-column::-webkit-scrollbar {
     width: 0;
+}
+
+card {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--card-color);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
 }
