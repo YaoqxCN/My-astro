@@ -1,6 +1,7 @@
 // Profile
 export const avatarUrl = "/profile.jpg";
 export const name = "Yaoqx";
+export const bio = "一名地球OL新玩家";
 
 // Site
 export const siteUrl = "https://yaoqx.pages.dev";
