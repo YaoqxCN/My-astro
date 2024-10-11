@@ -235,9 +235,9 @@ declare module 'astro:content' {
   collection: "blog";
   data: any
 } & { render(): Render[".md"] };
-"2024-09-28.md": {
-	id: "2024-09-28.md";
-  slug: "2024-09-28";
+"2024-10-10.md": {
+	id: "2024-10-10.md";
+  slug: "2024-10-10";
   body: string;
   collection: "blog";
   data: any

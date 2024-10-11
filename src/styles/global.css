@@ -2,29 +2,49 @@
     --theme-color: #a7c4e4;
     --theme-primary-color: rgba(74, 144, 226, 0.5);
     --theme-bg-primary: rgba(173, 197, 230, 0.1);
-    --theme-bg: #d7e5f5;
-    --card-color: #ffffff;
-    --link-color: #286BFC;
-    --font-color: rgb(69, 88, 115);
+    --theme-bg: #13283f;
+    --card-color: rgba(61, 61, 61, 0.2);
+    --font-color: #dfdfdf;
+    --link-color: #8eb2ff;
     --success-color: #76B52F;
     --error-color: #FF836B;
     --warning-color: #F4CE0C;
     --info-color: #286BFC;
 }
 
-:root.dark {
-    --theme-bg: #13283f;
-    --card-color: #2d364b;
-    --font-color: #dfdfdf;
-    --link-color: #8eb2ff;
-}
-
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: var(--theme-bg);
+    background: #000;
+    background-attachment: fixed;
     transition: all 0.2s ease-in-out;
+    overflow-x: hidden;
 }
+
+
+.star {
+    position: fixed;
+    border-radius: 50%;
+    background: rgb(255, 246, 221);
+    
+    background-attachment: fixed;
+    animation: twinkling 1s infinite alternate, moving 20s infinite alternate; /* 修改移动时长 */
+}
+
+@keyframes twinkling {
+    0% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+@keyframes moving {
+    0% {
+        transform: translate(0, 0);
+    }
+    100% {
+        transform: translate(calc(50vw - 50%), calc(50vh - 50%)); /* 在视口中随机移动 */
+    }
+}
+
 
 h1,
 h2,
@@ -364,8 +384,9 @@ th {
 }
 
 card {
-    border: 1px solid var(--border-color);
+    border: 1px solid #444444;
     border-radius: 8px;
     background: var(--card-color);
+    backdrop-filter: blur(10px);
     transition: all 0.2s ease-in-out;
 }
