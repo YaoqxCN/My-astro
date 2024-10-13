@@ -19,14 +19,13 @@ const { title, isBlog } = Astro.props;
     <title>{siteName} - {title}</title>
   </head>
   <body>
+    <Menu />
     <div class="layout">
       <div class="left-column">
         <Profile />
-        <Menu />
       </div>
       <div class="center-column">
         <slot />
-        <Footer />
       </div>
       <div class="right-column">
         {isBlog && <Content />}
@@ -34,6 +33,7 @@ const { title, isBlog } = Astro.props;
         <Tags />
       </div>
     </div>
+    <Footer />
     
     <!-- 添加昼夜切换按钮 -->
     <div class="theme-toggle" style="position: fixed; bottom: 20px; right: 20px;">

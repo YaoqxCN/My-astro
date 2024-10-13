@@ -3,7 +3,7 @@
     --theme-primary-color: rgba(74, 144, 226, 0.5);
     --theme-bg-primary: rgba(173, 197, 230, 0.1);
     --theme-bg: #13283f;
-    --card-color: rgba(61, 61, 61, 0.2);
+    --card-color: rgba(61, 61, 61, 0.1);
     --font-color: #dfdfdf;
     --link-color: #8eb2ff;
     --success-color: #76B52F;
@@ -24,9 +24,9 @@ body {
 
 .star {
     position: fixed;
+    z-index: -1000;
     border-radius: 50%;
     background: rgb(255, 246, 221);
-    
     background-attachment: fixed;
     animation: twinkling 1s infinite alternate, moving 20s infinite alternate; /* 修改移动时长 */
 }
@@ -341,6 +341,7 @@ th {
     display: flex;
     justify-content: center;
     width: 100%;
+    margin-top: 70px;
 }
 
 
@@ -349,9 +350,8 @@ th {
     padding: 1rem;
     position: sticky;
     /* Change to sticky */
-    height: 100vh;
-
-    top: 0;
+    height: 100%;
+    top: 70px;
 }
 
 /* Remove margin adjustments from center-column */
@@ -364,9 +364,10 @@ th {
     width: 300px;
     padding: 1rem;
     position: sticky;
-    height: 100vh;
+    height: 100%;
     /* Change to sticky */
-    top: 0;
+    top: 70px;
+    overflow-y: auto;
 }
 
 .left-column,
@@ -387,6 +388,19 @@ card {
     border: 1px solid #444444;
     border-radius: 8px;
     background: var(--card-color);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(3px);
     transition: all 0.2s ease-in-out;
+}
+
+.card {
+    border: 1px solid #444444;
+    border-radius: 8px;
+    background: var(--card-color);
+    backdrop-filter: blur(3px);
+    transition: all 0.2s ease-in-out;
+}
+
+.button {
+    border-radius: 5px;
+    padding: 10px;
 }
