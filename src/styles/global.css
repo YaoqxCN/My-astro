@@ -2,20 +2,31 @@
     --theme-color: #a7c4e4;
     --theme-primary-color: rgba(74, 144, 226, 0.5);
     --theme-bg-primary: rgba(173, 197, 230, 0.1);
-    --theme-bg: #13283f;
-    --card-color: rgba(61, 61, 61, 0.1);
-    --font-color: #dfdfdf;
-    --link-color: #8eb2ff;
+    --theme-bg: #d7e5f5;
+    --star-color: #ffd689;
+    --card-color: #ffffff;
+    --border-color: #e5e5e5;
+    --link-color: #286BFC;
+    --font-color: rgb(69, 88, 115);
     --success-color: #76B52F;
     --error-color: #FF836B;
     --warning-color: #F4CE0C;
     --info-color: #286BFC;
 }
 
+:root.dark {
+    --theme-bg: #13283f;
+    --card-color: #2d364b;
+    --font-color: #dfdfdf;
+    --link-color: #8eb2ff;
+    --border-color: #333;
+    --star-color: #f6f6f6;
+}
+
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    background: #000;
+    background: var(--theme-bg);
     background-attachment: fixed;
     transition: all 0.2s ease-in-out;
     overflow-x: hidden;
@@ -385,7 +396,7 @@ th {
 }
 
 card {
-    border: 1px solid #444444;
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     background: var(--card-color);
     backdrop-filter: blur(3px);
@@ -393,14 +404,9 @@ card {
 }
 
 .card {
-    border: 1px solid #444444;
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     background: var(--card-color);
     backdrop-filter: blur(3px);
     transition: all 0.2s ease-in-out;
-}
-
-.button {
-    border-radius: 5px;
-    padding: 10px;
 }

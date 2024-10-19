@@ -1,9 +1,21 @@
+---
+// 导入 ThemeIcon 组件
+import ThemeIcon from './ThemeIcon.astro';
+---
+
 <card>
-  <a href="/" class="link button">主页</a>
-  <a href="/about" class="link button">关于</a>
-  <a href="/blog" class="link button">博客</a>
-  <a href="/project" class="link button">项目</a>
-  <a href="/friend" class="link button">友链</a>
+  <div class="menu-items"> <!-- 新增菜单项的容器 -->
+    <a href="/" class="link">主页</a>
+    <a href="/about" class="link">关于</a>
+    <a href="/blog" class="link">博客</a>
+    <a href="/project" class="link">项目</a>
+    <a href="/friend" class="link">友链</a>
+  </div>
+  
+  <!-- 右侧显示 ThemeIcon 组件 -->
+  <div class="theme-icon">
+    <ThemeIcon />
+  </div>
 </card>
 
 <style>
@@ -15,8 +27,15 @@
     z-index: 10000;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between; /* 保持空间均匀分配 */
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .menu-items { /* 新增样式 */
+    display: flex; /* 使用 flex 布局 */
+    align-items: center; /* 垂直居中对齐 */
+    justify-content: center; /* 水平居中对齐 */
+    flex-grow: 1; /* 使容器扩展以填充可用空间 */
   }
 
   .link {
@@ -30,6 +49,7 @@
     margin: 10px;
     padding: 10px 30px;
     border-bottom: none;
+    border-radius: 5px;
   }
 
   .link:hover {
@@ -49,5 +69,10 @@
   .link:hover::before {
     background-color: transparent;
     background: transparent;
+  }
+
+  .theme-icon {
+    margin-left: auto; /* 右侧对齐 */
+    margin-right: 10px;
   }
 </style>

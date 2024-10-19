@@ -1,21 +1,19 @@
 ---
 import "../styles/global.css";
-const { image, title } = Astro.props;
+const { image, title, color } = Astro.props;
 ---
 
-<card>
+<card style={`background-color: ${color || ''};`}>
   {image && <img src={image} alt="Card Image" class="card-image" />}
   <span>{title && <h1>{title}</h1>}<slot /></span>
 </card>
 
 <style>
   card {
-    
     border-radius: 8px;
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
-    
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   }
 

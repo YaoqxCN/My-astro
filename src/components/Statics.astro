@@ -1,0 +1,66 @@
+---
+import { getCollection } from "astro:content";
+const posts = await getCollection("blog");
+
+async function getBlogCategoryCount() {
+  const blogs = await getCollection('blog'); // 获取博客集合
+
+  const categories = blogs.map(blog => blog.data.categories); // 提取每篇博客的分类
+  const uniqueCategories = new Set(categories); // 使用 Set 去重
+  const categoryCount = uniqueCategories.size; // 统计不同分类的数量
+
+  return categoryCount;
+}
+
+const categoryCount = await getBlogCategoryCount();
+
+async function getBlogTagCount() {
+  const blogs = await getCollection('blog'); // 获取博客集合
+
+  const tags = blogs.map(blog => blog.data.tags); // 提取每篇博客的分类
+  const uniqueTags = new Set(tags); // 使用 Set 去重
+  const tagCount = uniqueTags.size; // 统计不同分类的数量
+
+  return tagCount;
+}
+
+const tagCount = await getBlogTagCount();
+
+---
+
+<card>
+  <div class="data-item">
+    <p>文章</p>
+    <span>{posts.length} 篇</span>
+  </div>
+  <div class="data-item">
+    <p>分类</p>
+    <span>{categoryCount}</span>
+  </div>
+  <div class="data-item">
+    <p>标签</p>
+    <span>{tagCount}</span>
+  </div>
+</card>
+
+<style>
+  card {
+    border-radius: 8px;
+    padding: 25px;
+    padding-top: 5px;
+    display: flex;
+    flex-direction: row; /* 修改为横排 */
+    justify-content: space-between; /* 使项目均匀分布 */
+    margin-bottom: 20px;
+  }
+  .data-item {
+    text-align: center; /* 文本居中对齐 */
+  }
+  p, span {
+    color: var(--font-color);
+  }
+  p {
+    font-weight: bold;
+    font-size: 20px;
+  }
+</style>
