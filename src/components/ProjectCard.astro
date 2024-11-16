@@ -21,17 +21,12 @@ const { title, image, desc, url, badge, target = "_blank" } = Astro.props;
     display: flex;
     align-items: flex-start; /* Align items to the top */
     
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    
     margin-bottom: 20px;
     position: relative;
     overflow: hidden; /* Ensures gradient is contained */
     transition: all 0.2s ease-in-out;
     min-height: 200px; /* 设置最小高度 */
-  }
-
-  card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   }
 
   .title-badge a {
